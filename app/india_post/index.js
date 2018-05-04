@@ -1,6 +1,6 @@
 const pupeeteer = require("puppeteer");
 let browser, page;
-const couriers = require("../config/couriers");
+const couriers = require("../../client/src/config/couriers");
 const temp_path = require("../config/global_paths");
 const GoogleVisionApi = require("../captacha_reader");
 
@@ -9,7 +9,7 @@ let india_post = couriers.INDIA_POST;
 exports.fetchIndiaPost = async (consignmentNo) => {
     try {
         browser = await pupeeteer.launch({
-            headless: false
+            headless : false
         });
 
         page = await browser.newPage();
@@ -27,7 +27,6 @@ exports.fetchIndiaPost = async (consignmentNo) => {
 
         let read_captcha = new GoogleVisionApi;
         let captchaText = await read_captcha.readCaptchaImage();
-
         
         // fill the value to the browser
 
@@ -43,6 +42,7 @@ exports.fetchIndiaPost = async (consignmentNo) => {
 
         // close the browser
         await browser.close();
+        return statusText;
     } catch (error) {
         console.error(error);
     }

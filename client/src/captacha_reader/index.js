@@ -2,7 +2,7 @@ const vision = require('@google-cloud/vision');
 const temp_path =  require("../config/global_paths");
 const fs = require('fs');
 
-class GoogleVisionApi {
+class GoogleVisionApi {;
     
     async readCaptchaImage(){
         let captcha = temp_path.captcha
